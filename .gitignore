@@ -20,13 +20,9 @@ build
 # other
 eclipse
 run
-server
+test
 logs
-libs
-lib4
 
-classes
-
-src/generated/resources/.cache
-
-build.gradle
+# Files from Forge MDK
+forge*changelog.txt
+/temp/
