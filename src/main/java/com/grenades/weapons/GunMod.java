@@ -11,23 +11,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(Reference.MOD_ID)
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID,bus = Mod.EventBusSubscriber.Bus.MOD)
-public class GunMod {
-    public static boolean controllableLoaded = false;
-    public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
-    public GunMod() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.clientSpec);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.commonSpec);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.serverSpec);
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModItems.REGISTER.register(bus);
-        ModEntities.REGISTER.register(bus);
-        ModEffects.REGISTER.register(bus);
-        ModSounds.REGISTER.register(bus);
-        ModCreativeTabs.TABS.register(bus);
-        bus.addListener(ClientHandler::onClientSetup);
-
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@OnlyIn(Dist.CLIENT)
+public class ClientHandler {
+    @SubscribeEvent
+    public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.THROWABLE_GRENADE.get(), ThrowableGrenadeRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWABLE_STUN_GRENADE.get(), ThrowableGrenadeRenderer::new);
     }
 
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        EntityRenderers.register(ModEntities.THROWABLE_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
+        EntityRenderers.register(ModEntities.THROWABLE_STUN_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
+        MinecraftForge.EVENT_BUS.register(SoundHandler.get());
+    }
 
 }
