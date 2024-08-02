@@ -1,0 +1,8 @@
+{
+  "item.grenades.flash_grenade": "闪光弹",
+  "item.grenades.stun_grenade": "震撼弹",
+  "item.grenades.impact_flash_grenade": "瞬爆闪光弹",
+  "effect.grenades.deafened": "失聪",
+  "effect.grenades.blinded": "失明",
+  "itemGroup.Grenades_by_Mason": "投掷物 by Mason"
+}

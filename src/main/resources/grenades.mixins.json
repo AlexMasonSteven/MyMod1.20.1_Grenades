@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.grenades.weapons.mixin",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "grenades.refmap.json",
+  "mixins": [],
+  "client": [
+    "client.GameRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "ring": {
+    "subtitle": "ring",
+    "replace": "true",
+    "sounds": [
+      { "name": "grenades:ring" }
+    ]
+  },
+  "explosion": {
+    "subtitle": "explosion",
+    "sounds": [
+      { "name": "grenades:explosion" }
+    ]
+  }
+}

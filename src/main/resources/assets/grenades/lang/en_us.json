@@ -1,0 +1,8 @@
+{
+  "item.grenades.flash_grenade": "Flash Grenade",
+  "item.grenades.stun_grenade": "Stun Grenade",
+  "item.grenades.impact_flash_grenade": "Impact Flash Grenade",
+  "effect.grenades.deafened": "Deafened",
+  "effect.grenades.blinded": "Blinded",
+  "itemGroup.Grenades_by_Mason": "Grenades by Mason"
+}
