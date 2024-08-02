@@ -1,6 +1,7 @@
 package com.grenades.weapons.client.handler;
 
 import com.grenades.weapons.Reference;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import com.grenades.weapons.client.render.entity.ThrowableGrenadeRenderer;
 import com.grenades.weapons.init.ModEntities;
 import net.minecraft.client.Minecraft;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @OnlyIn(Dist.CLIENT)
 public class ClientHandler {
     @SubscribeEvent
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
