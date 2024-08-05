@@ -17,5 +17,7 @@ public class ModCreativeTabs {
                 output.accept(ModItems.STANDARD_FLASH_GRENADE.get());
                 output.accept(ModItems.STUN_GRENADE.get());
                 output.accept(ModItems.IMPACT_FLASH_GRENADE.get());
+                output.accept(ModItems.LIGHT_GRENADE.get());
+                output.accept(ModItems.BASEBALL_GRENADE.get());
             }).build());
 }

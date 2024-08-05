@@ -19,7 +19,6 @@ import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
-
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.ConcurrentModificationException;
@@ -73,7 +72,7 @@ public class SoundHandler
                 return;
             }
         }
-      //空检查
+        //空检查
         if (ModEffects.DEAFENED.get() == null || ModEffects.DEAFENED.get() == null) {
             System.out.println("ModEffects.DEAFENED is null!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!(By Mason)");
             return;

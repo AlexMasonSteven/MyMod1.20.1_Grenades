@@ -258,13 +258,11 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
                     BlockState state = world.getBlockState(pos);
 
                     // Added light opacity check
-                    /*
-                    if(state.getLightBlock(world, pos) != 0 && (!ignoreBlockWithoutBoundingBox || state.getMaterial() == PORTAL || state.getCollisionShape(world, pos) != Shapes.empty()))
+                    if(state.getLightBlock(world, pos) != 0 && (!ignoreBlockWithoutBoundingBox/* || state.getMapColor() == PORTAL */|| state.getCollisionShape(world, pos) != Shapes.empty()))
                     {
                         return world.clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
                     }
 
-                     */
                 }
                 return returnLastUncollidableBlock ? raytraceresult2 : null;
             }

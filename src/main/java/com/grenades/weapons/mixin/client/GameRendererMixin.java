@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderBuffers;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,22 +15,26 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
-public class GameRendererMixin
-{
+public class GameRendererMixin {
     RenderBuffers renderBuffers = Minecraft.getInstance().renderBuffers(); // 假设这是正确的初始化方式
 
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/profiling/ProfilerFiller;popPush(Ljava/lang/String;)V", shift = At.Shift.AFTER))
-    public void render(float partialTicks, long nanoTime, boolean renderWorldIn, CallbackInfo ci)
-    {
+    public void render(float partialTicks, long nanoTime, boolean renderWorldIn, CallbackInfo ci) {
         Minecraft minecraft = Minecraft.getInstance();
         Player player = minecraft.player;
         if (player == null) {
             return;
         }
         Window window = Minecraft.getInstance().getWindow();
-        MobEffectInstance blindedEffect = player.getEffect(ModEffects.BLINDED.get());
-        if (blindedEffect != null) {
-            float percent = Math.min((blindedEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
+        // 防止因 ModEffects.BLINDED.get() 为 null 造成的崩溃
+        MobEffect blindedEffect = ModEffects.BLINDED.get();
+        if (blindedEffect == null) {
+            System.out.println("GameRendererMixin: Blinded effect is not registered!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            return;
+        }
+            MobEffectInstance blindedEffectInstance = player.getEffect(blindedEffect);
+        if (blindedEffectInstance != null) {
+            float percent = Math.min((blindedEffectInstance.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
             GuiGraphics guigraphics = new GuiGraphics(minecraft, renderBuffers.bufferSource());
             // 使用 GuiGraphics 进行渲染
             guigraphics.fill(0, 0, window.getWidth(), window.getHeight(), ((int) (percent * Config.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);
