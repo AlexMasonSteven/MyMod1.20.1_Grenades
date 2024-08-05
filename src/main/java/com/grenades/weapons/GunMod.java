@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod(Reference.MOD_ID)
+<<<<<<< HEAD
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID,bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GunMod {
     public GunMod() {
@@ -33,4 +34,21 @@ public class GunMod {
         ModSounds.REGISTER.register(bus);
         ModCreativeTabs.TABS.register(bus);
     }
+=======
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@OnlyIn(Dist.CLIENT)
+public class ClientHandler {
+    @SubscribeEvent
+    public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.THROWABLE_GRENADE.get(), ThrowableGrenadeRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWABLE_STUN_GRENADE.get(), ThrowableGrenadeRenderer::new);
+    }
+
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        EntityRenderers.register(ModEntities.THROWABLE_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
+        EntityRenderers.register(ModEntities.THROWABLE_STUN_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
+        MinecraftForge.EVENT_BUS.register(SoundHandler.get());
+    }
+
+>>>>>>> e8fa0df39ea1bc3919d6a71edef897b3bebb3b39
 }
