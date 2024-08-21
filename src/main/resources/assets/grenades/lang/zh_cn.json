@@ -4,6 +4,7 @@
   "item.grenades.impact_flash_grenade": "触碰式闪光弹",
   "item.grenades.baseball_grenade": "M67 延时引信手雷",
   "item.grenades.light_grenade": "F1 手雷",
+  "item.grenades.incendiary_grenade": "AN-M14铝热剂燃烧弹",
   "effect.grenades.deafened": "失聪",
   "effect.grenades.blinded": "失明",
   "itemGroup.Grenades_by_Mason": "投掷物 by Mason"

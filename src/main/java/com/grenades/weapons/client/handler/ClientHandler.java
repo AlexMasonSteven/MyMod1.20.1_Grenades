@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -19,6 +20,8 @@ public class ClientHandler {
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.THROWABLE_GRENADE.get(), ThrowableGrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWABLE_STUN_GRENADE.get(), ThrowableGrenadeRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWABLE_FIRE_GRENADE.get(), ThrowableGrenadeRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWABLE_SMOKE_GRENADE.get(), ThrowableGrenadeRenderer::new);
 
     }
 
@@ -26,10 +29,9 @@ public class ClientHandler {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             EntityRenderers.register(ModEntities.THROWABLE_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
             EntityRenderers.register(ModEntities.THROWABLE_STUN_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
-<<<<<<< HEAD
+            EntityRenderers.register(ModEntities.THROWABLE_FIRE_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
+            EntityRenderers.register(ModEntities.THROWABLE_SMOKE_GRENADE.get(), context -> new ThrowableGrenadeRenderer(context));
             MinecraftForge.EVENT_BUS.register(SoundHandler.get());
-=======
->>>>>>> e8fa0df39ea1bc3919d6a71edef897b3bebb3b39
         }
     }
 }

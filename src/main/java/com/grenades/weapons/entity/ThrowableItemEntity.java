@@ -26,11 +26,11 @@ import net.minecraftforge.network.NetworkHooks;
 public abstract class ThrowableItemEntity extends ThrowableProjectile implements IEntityAdditionalSpawnData
 {
     private ItemStack item = ItemStack.EMPTY;
-    private boolean shouldBounce;
+    boolean shouldBounce;
     private float gravityVelocity = 0.03F;
 
     /* The max life of the entity. If -1, will stay alive forever and will need to be explicitly removed. */
-    private int maxLife = 20 * 10;
+    public int maxLife = 20*3000;
 
     public ThrowableItemEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {
@@ -85,6 +85,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
         if(this.shouldBounce && this.tickCount >= this.maxLife)
         {
             this.remove(RemovalReason.DISCARDED);
+            System.out.println("Entity removed due to max life");
             this.onDeath();
         }
     }

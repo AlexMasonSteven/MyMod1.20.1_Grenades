@@ -11,5 +11,14 @@
     "sounds": [
       { "name": "grenades:explosion" }
     ]
+  },
+  "firgrenade.explosion": {
+    "sounds": [
+      "random/explode1",
+      "random/explode2",
+      "random/explode3",
+      "random/explode4"
+    ],
+    "subtitle": "grenades.subtitle.firegrenade.explosion"
   }
 }

@@ -18,7 +18,7 @@ public class ImpactFlashGrenade extends ThrowableStunGrenadeEntity {
     public ImpactFlashGrenade(Level world, LivingEntity player, int maxCookTime) {
         super(world, player, maxCookTime);
         this.setShouldBounce(false);
-        this.setItem(new ItemStack(ModItems.STANDARD_FLASH_GRENADE.get()));
+        this.setItem(new ItemStack(ModItems.IMPACT_FLASH_GRENADE.get()));
         this.setGravityVelocity(0.01F);
     }
     protected boolean calculateAndApplyEffect(MobEffect effect, Config.EffectCriteria criteria, LivingEntity entity, Vec3 grenade, Vec3 eyes, double distance, double angle)

@@ -15,6 +15,8 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> ENTITY_STUN_GRENADE_EXPLOSION = register("explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_STUN_GRENADE_RING = register("ring");
 
+	public static final RegistryObject<SoundEvent> FIRE = register("firgrenade.explosion");
+
 	private static RegistryObject<SoundEvent> register(String key)
 	{
 		return REGISTER.register(key, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Reference.MOD_ID, key)));

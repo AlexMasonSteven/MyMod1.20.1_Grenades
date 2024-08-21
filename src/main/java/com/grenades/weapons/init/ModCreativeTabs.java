@@ -15,9 +15,11 @@ public class ModCreativeTabs {
             .icon(() -> ModItems.STANDARD_FLASH_GRENADE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(ModItems.STANDARD_FLASH_GRENADE.get());
-                output.accept(ModItems.STUN_GRENADE.get());
+                /*output.accept(ModItems.STUN_GRENADE.get());*/
                 output.accept(ModItems.IMPACT_FLASH_GRENADE.get());
                 output.accept(ModItems.LIGHT_GRENADE.get());
                 output.accept(ModItems.BASEBALL_GRENADE.get());
+                output.accept(ModItems.INCENDIARY_GRENADE.get());
+                output.accept(ModItems.WHITE_SMOKE_GRENADE.get());
             }).build());
 }

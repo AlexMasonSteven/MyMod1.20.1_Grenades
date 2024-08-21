@@ -1,8 +1,6 @@
 package com.grenades.weapons.init;
 import com.grenades.weapons.Reference;
-import com.grenades.weapons.entity.GrenadeEntity;
-import com.grenades.weapons.entity.ThrowableGrenadeEntity;
-import com.grenades.weapons.entity.ThrowableStunGrenadeEntity;
+import com.grenades.weapons.entity.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -22,6 +20,10 @@ public class ModEntities
 
     public static final RegistryObject<EntityType<ThrowableGrenadeEntity>> THROWABLE_GRENADE = registerBasic("throwable_grenade", ThrowableGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableStunGrenadeEntity>> THROWABLE_STUN_GRENADE = registerBasic("throwable_stun_grenade", ThrowableStunGrenadeEntity::new);
+
+    public static final RegistryObject<EntityType<ThrowableFireGrenadeEntity>> THROWABLE_FIRE_GRENADE = registerBasic("throwable_fire_grenade", ThrowableFireGrenadeEntity::new);
+
+    public static final RegistryObject<EntityType<ThrowableSmokeGrenadeEntity>> THROWABLE_SMOKE_GRENADE = registerBasic("throwable_smoke_grenade", ThrowableSmokeGrenadeEntity::new);
 
     public static final RegistryObject<EntityType<GrenadeEntity>> GRENADE = registerBasic("grenade", GrenadeEntity::new);
     private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function)
